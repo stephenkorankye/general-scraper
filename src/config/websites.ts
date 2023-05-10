@@ -6,7 +6,7 @@ export const websites = [
         url : "https://en.wikipedia.org/wiki"
     } , 
     {
-        name : "Github" , 
-        url : "https://github.com"
+        name : "Github - Respositories" , 
+        url : "https://api.github.com/users"
     } , 
 ]
