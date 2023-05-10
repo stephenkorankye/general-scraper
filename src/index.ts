@@ -27,16 +27,15 @@ includes(app) ;
 const args = process.argv.slice(2) ; 
 
 if ( args[0] === "--cmd" || args[0] === "cmd" ) {
-    console.log ( "--------------------------   USING COMMAND LINE   --------------------------")
     initializeScraper() ; 
 }
-else {
-    console.log ( "--------------------------   Using ROUTES AND ENDPOINTS  --------------------------" ) ; 
+else { 
+    app.listen(PORT , () => console.log ( `Running on PORT ${PORT}`))
 }
 
 
 
-app.listen(PORT)
+
 
 
 
