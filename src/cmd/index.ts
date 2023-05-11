@@ -42,8 +42,8 @@ export const initializeScraper = async () => {
 
                 // Github
                 if ( answer === 2 ) {
-                    rl.question("Enter Github Username" , async ( username ) => {
-                        
+                    rl.question("Enter Github Username: " , async ( username ) => {
+
                        data = await scrapeGithub(websites[answer - 1] , username) ; 
 
                     })
