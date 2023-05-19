@@ -5,6 +5,7 @@ import * as csv from "fast-csv" ;
 import * as  fs from "fs" ; 
 import { websites } from '../config/websites';
 import { scrapeGithubRepos, scrapeGithubUser } from '../scrapers/github';
+import { scrapeWikipedia } from '../scrapers/wikipedia';
 
 
 // @desc    Accept inputs from the user --cmd 
@@ -39,6 +40,16 @@ export const initializeScraper = async () => {
                 if ( answer < 1 || answer > websites.length ) {
                     console.log ("Invalid Option" ) ; 
                     process.exit() ; 
+                }
+
+
+                // Wikipedia ; 
+                if ( answer === 1 ) {
+                    rl.question("Enter Title to fetch (MUST BE VALID): " , async ( title ) => {
+                        
+                        scrapeWikipedia( websites[answer - 1] , title ) ; 
+                        
+                    })
                 }
 
 
