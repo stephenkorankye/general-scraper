@@ -2,7 +2,7 @@ import axios from "axios" ;
 import cheerio from "cheerio" ; 
 
 // @desc    Scraping for Github repos of a user 
-export const scrapeGithub = async ( website : any ,  username : string ) => {
+export const scrapeGithubRepos = async ( website : any ,  username : string ) : Promise<any> => {
     try {
         
         console.info( "Fetching...")
@@ -12,7 +12,7 @@ export const scrapeGithub = async ( website : any ,  username : string ) => {
 
         if ( !repos || repos.length == 0 ) {
             console.log ( "No Repos Found " ) ; 
-            return ; 
+            return [] ; 
         }
 
 
@@ -32,15 +32,59 @@ export const scrapeGithub = async ( website : any ,  username : string ) => {
                 }
 
 
-
             })
         ); 
 
-        console.log ( "Repos : " , repoInfo ) ; 
+        return repoInfo ; 
 
 
     }
     catch ( err ) {
         console.log ( "Error Scraping Github Repos" , err )
+        return [] ; 
     }
 }
+
+
+// @desc    Fetching Github profile of a user ; 
+export const scrapeGithubUser = async ( website : any ,  username : string ) : Promise<any> => {
+    try {
+        
+        console.info( "Fetching User...")
+        
+
+        const { data } = await axios.get(`${website.url}/${username}`) ;
+
+        if ( !data ) {
+            console.log ( "No Repos Found " ) ; 
+            return {} ; 
+        }
+
+        return {
+            name :  data.name , 
+            company : data.company , 
+            email : data.email , 
+            website : data.blog , 
+            location : data.location , 
+            bio : data.bio , 
+            public_repos : data.public_repos , 
+            public_gists : data.public_gists , 
+            followers : data.followers , 
+            following : data.following , 
+            joined : data.created_at 
+        }
+
+
+        
+
+
+    }
+    catch ( err ) {
+        console.log ( "Error Scraping Github Repos" , err )
+        return {} ; 
+    }
+}
+
+
+
+

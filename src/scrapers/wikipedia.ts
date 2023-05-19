@@ -4,8 +4,6 @@ import he from "he" ;
 
 import { Document, Paragraph, Packer, TextRun  } from "docx";
 
-
-// @desc   fetching contents of a page from wikipedia
 export const scrapeWikipedia = async ( website : any , title : string ) : Promise<any> => {
     try {
 
@@ -95,6 +93,8 @@ export const scrapeWikipedia = async ( website : any , title : string ) : Promis
             ]
         }) ; 
 
+        
+
 
         // Saving content 
         const buffer = await Packer.toBuffer(doc) ; 
@@ -109,6 +109,8 @@ export const scrapeWikipedia = async ( website : any , title : string ) : Promis
         fs.writeFileSync(fileName , buffer ) ; 
 
         console.log ( `Done! Saved to ${fileName}`) ; 
+        
+
 
 
     }
