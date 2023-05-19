@@ -9,8 +9,4 @@ export const websites = [
         name : "Github - Respositories" , 
         url : "https://api.github.com/users"
     } , 
-    {
-        name : "Github - User Profile" , 
-        url : "https://api.github.com/users"
-    } 
 ]
