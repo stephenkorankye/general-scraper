@@ -3,7 +3,7 @@
 export const websites = [
     {
         name : "Wikipedia" , 
-        url : "https://en.wikipedia.org/wiki"
+        url : "https://en.wikipedia.org/w/api.php"
     } , 
     {
         name : "Github - Respositories" , 
